@@ -197,20 +197,20 @@ const PAGES = [
   // width box ≈ 435 → padding kiri 40, kanan 12 → maxWidth ≈ 383
   { id:'p2a', title:'1st Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'',
     hdr:{ x:100, y:26, maxWidth:350 },  // header sedikit lebih dekat ke atas
-    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:383, letterSpacing:0,
+    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:373, letterSpacing:0,
           textAlign:"justify", textAlignLast:"left" }
   },
   { id:'p2b', title:'2nd Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'',
-    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:384, letterSpacing:0,
+    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:374, letterSpacing:0,
           textAlign:"justify", textAlignLast:"left" }
   },
   { id:'p2c', title:'3rd Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'',
     hdr:{ x:100, y:26, maxWidth:350 },
-    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:383, letterSpacing:0,
+    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:373, letterSpacing:0,
           textAlign:"justify", textAlignLast:"left" }
   },
   { id:'p2d', title:'4th Term', x:563, y:805, w:435, h:400.81, preset:'BIG', text:'',
-    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:383, letterSpacing:0,
+    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:373, letterSpacing:0,
           textAlign:"justify", textAlignLast:"left" }
   }
 ]},
@@ -218,20 +218,20 @@ const PAGES = [
 { name:"Study Plan 5–8", bg:FRAME[3], boxes:[
   { id:'p3a', title:'5th Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'',
     hdr:{ x:100, y:26, maxWidth:350 },
-    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:383, letterSpacing:0,
+    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:373, letterSpacing:0,
           textAlign:"justify", textAlignLast:"left" }
   },
   { id:'p3b', title:'6th Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'',
-    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:384, letterSpacing:0,
+    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:374, letterSpacing:0,
           textAlign:"justify", textAlignLast:"left" }
   },
   { id:'p3c', title:'7th Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'',
     hdr:{ x:100, y:26, maxWidth:350 },
-    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:383, letterSpacing:0,
+    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:373, letterSpacing:0,
           textAlign:"justify", textAlignLast:"left" }
   },
   { id:'p3d', title:'8th Term', x:563, y:805, w:435, h:400.81, preset:'BIG', text:'',
-    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:383, letterSpacing:0,
+    txt:{ x:40,  y:92,  size:18, lineHeight:1.30, maxWidth:373, letterSpacing:0,
           textAlign:"justify", textAlignLast:"left" }
   }
 ]},
@@ -526,6 +526,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
