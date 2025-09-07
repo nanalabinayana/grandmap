@@ -241,7 +241,7 @@ const PAGES = [
     hdr:{ abs:true, x:183, y:400, size:32, weight:500, color:"#FFFFFF",
           maxWidthAbs:457, align:"center" },
     txt:{ abs:true, x:121, y:474, size:20, weight:400, color:"#2B2B2B",
-          maxWidthAbs:720, lineHeight:1.30, letterSpacing:0,
+          maxWidthAbs:800, lineHeight:1.30, letterSpacing:0,
           textAlign:"justify", textAlignLast:"left" }
   },
   {
@@ -250,7 +250,7 @@ const PAGES = [
     hdr:{ abs:true, x:183, y:818, size:32, weight:500, color:"#FFFFFF",
           maxWidthAbs:457, align:"center" },
     txt:{ abs:true, x:122, y:897, size:20, weight:400, color:"#2B2B2B",
-          maxWidthAbs:720, lineHeight:1.30, letterSpacing:0,
+          maxWidthAbs:800, lineHeight:1.30, letterSpacing:0,
           textAlign:"justify", textAlignLast:"left" }
   }
 ]},
@@ -496,6 +496,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
