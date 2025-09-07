@@ -235,23 +235,25 @@ const PAGES = [
   }
 ]},
   { name:"Community Service & Grand Goals", bg:FRAME[6], boxes:[
-    {
-      id:'p6a', title:'Contribution Plan',
-      // BG PNG (absolut ke kanvas)
-      x:83, y:375, w:915, h:365, preset:'BIG', text:'',
-      // TEKS absolut ke kanvas (tidak ikut BG)
-      
-      hdr: { abs:true, x:183, y:400, size:40, weight:457, color: "#FFFFFF", maxWidthAbs: 457, align:"center"},
-      txt: { abs: true, x: 121, y: 474, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 820, lineHeight: 1.45, letterSpacing: 0}
-    },
-    {
-      id:'p6b', title:'Personal Grand Goals',
-      x:61.57, y:778, w:915, h:387, preset:'BIG', text:'',
-      hdr: { abs:true, x:183, y:818, size:40, weight:423, color: "#FFFFFF", maxWidthAbs: 457, align:"center"},
-      txt: { abs:true, x:122, y:897, size:25, weight:400, color: "#2B2B2B", maxWidthAbs: 820, lineHeight: 1.45, letterSpacing: 0}
-    },
-  ]},
-
+  {
+    id:'p6a', title:'Contribution Plan',
+    x:83, y:375, w:915, h:365, preset:'BIG', text:'',
+    hdr:{ abs:true, x:183, y:400, size:32, weight:500, color:"#FFFFFF",
+          maxWidthAbs:457, align:"center" },
+    txt:{ abs:true, x:121, y:474, size:20, weight:400, color:"#2B2B2B",
+          maxWidthAbs:720, lineHeight:1.30, letterSpacing:0,
+          textAlign:"justify", textAlignLast:"left" }
+  },
+  {
+    id:'p6b', title:'Personal Grand Goals',
+    x:61.57, y:778, w:915, h:387, preset:'BIG', text:'',
+    hdr:{ abs:true, x:183, y:818, size:32, weight:500, color:"#FFFFFF",
+          maxWidthAbs:457, align:"center" },
+    txt:{ abs:true, x:122, y:897, size:20, weight:400, color:"#2B2B2B",
+          maxWidthAbs:720, lineHeight:1.30, letterSpacing:0,
+          textAlign:"justify", textAlignLast:"left" }
+  }
+]},
      { name:"Cover", bg: FRAME[7], boxes: [] }
 ];
 /* ============= RENDER ============= */
@@ -494,6 +496,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
