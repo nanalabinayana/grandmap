@@ -168,31 +168,47 @@ function deleteTerm(pageIndex, boxId){
 /* ---------- PAGES: posisi BG box (ABSOLUT) & posisi teks (relatif/ABS) ---------- */
 const PAGES = [
   { name:"Self Potential", bg:FRAME[1], boxes:[
-    { id:'p1a', title:'Self Potential 1', x:79,  y:375, w:430, h:349, preset:'SMALL', text:'' },
-    { id:'p1b', title:'Self Potential 2', x:568, y:375, w:430, h:349, preset:'SMALL', text:'' },
-    { id:'p1c', title:'Self Potential 3', x:79,  y:798, w:430, h:349, preset:'SMALL', text:'' },
-    { id:'p1d', title:'Self Potential 4', x:568, y:798, w:430, h:349, preset:'SMALL', text:'' },
+    { id:'p1a', title:'Self Potential 1', x:79,  y:375, w:430, h:249, preset:'BIG', text:'' },
+    { id:'p1b', title:'Self Potential 2', x:568, y:375, w:432.19, h:309, preset:'SMALL', text:'' },
+    { id:'p1c', title:'Self Potential 3', x:74.85,  y:791.4, w:434.15, h:429.6, preset:'SMALL', text:'' },
+    { id:'p1d', title:'Self Potential 4', x:568, y:798, w:448.46, h:279, preset:'SMALL', text:'' },
   ]},
   { name:"Study Plan 1–4", bg:FRAME[2], boxes:[
-    { id:'p2a', title:'1st Term', x:83,  y:365, w:435, h:400, preset:'SMALL', text:'' },
-    { id:'p2b', title:'2nd Term', x:563, y:363, w:435, h:401, preset:'SMALL', text:'' },
-    { id:'p2c', title:'3rd Term', x:83,  y:804, w:435, h:400, preset:'SMALL', text:'' },
-    { id:'p2d', title:'4th Term', x:563, y:805, w:435, h:400, preset:'SMALL', text:'' },
+    { id:'p2a', title:'1st Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'' },
+    { id:'p2b', title:'2nd Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
+    { id:'p2c', title:'3rd Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'' },
+    { id:'p2d', title:'4th Term', x:563, y:805, w:435, h:400.81, preset:'BIG', text:'' },
   ]},
   { name:"Study Plan 5–8", bg:FRAME[3], boxes:[
-    { id:'p2a', title:'5th Term', x:83,  y:365, w:435, h:400, preset:'SMALL', text:'' },
-    { id:'p2b', title:'6th Term', x:563, y:363, w:435, h:401, preset:'SMALL', text:'' },
-    { id:'p2c', title:'7th Term', x:83,  y:804, w:435, h:400, preset:'SMALL', text:'' },
-    { id:'p2d', title:'8th Term', x:563, y:805, w:435, h:400, preset:'SMALL', text:'' },
-  ]},
+    { id:'p2a', title:'5th Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'' },
+    { id:'p2b', title:'6th Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
+    { id:'p2c', title:'7th Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'' },
+    { id:'p2d', title:'8th Term', x:563, y:805, w:435, h:400.81, preset:'BIGL', text:'' },
+  ]},
+
   { name:"Life Grand Map 2025–2035", bg:FRAME[4], boxes:[
-    { id:'p4a', title:'2025 – 2030', x:79,  y:520, w:430, h:349, preset:'SMALL', text:'' },
-    { id:'p4b', title:'2030 – 2035', x:568, y:520, w:430, h:349, preset:'SMALL', text:'' },
+    { id:'p4a', title:'2025 – 2030', x:91,  y:438, w:430, h:489, preset:'SMALL', text:'',
+      // hdr:{ abs:true, x:166, y:454, size:35, weight:280, color:'#FFFFFF', maxWidthAbs:840 },
+      // txt:{ abs:true, x:166, y:166, size:35, weight:280, color:'#FFFFFF', maxWidthAbs:840 }
+      hdr: { abs: true, x: 200, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430},
+      txt: { abs: true, x: 130, y: 454 + 48 + 20, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
+     },
+    { id:'p4b', title:'2030 – 2035', x:580, y:438, w:430, h:489, preset:'SMALL', text:'',
+       hdr: { abs: true, x: 715, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430, align:"center"},
+       txt: { abs: true, x: 610, y: 537, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
+     },
   ]},
   { name:"Life Grand Map 2035–Beyond", bg:FRAME[5], boxes:[
-    { id:'p5a', title:'2035 – 2040', x:79,  y:520, w:430, h:349, preset:'SMALL', text:'' },
-    { id:'p5b', title:'2040 – Beyond', x:568, y:520, w:430, h:349, preset:'SMALL', text:'' },
+    { id:'p5a', title:'2035 – 2040', x:91,  y:332.73, w:430, h:613.82, preset:'SMALL', text:'',
+       hdr: { abs: true, x: 200, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430, align:"center"},
+       txt: { abs: true, x: 125, y: 537, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
+    },
+    { id:'p5b', title:'2040 – Beyond', x:580, y:313.18, w:430, h:613.82, preset:'SMALL', text:'',
+       hdr: { abs: true, x: 655, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 280, align:"center"},
+       txt: { abs: true, x: 610, y: 537, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
+     },
   ]},
+  
   { name:"Community Service & Grand Goals", bg:FRAME[6], boxes:[
     {
       id:'p6a', title:'Contribution Plan',
@@ -452,5 +468,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
