@@ -1,872 +1,231 @@
 /* =========================================================
-   LGMCakra — Stylesheet (Final)
-   - Stage 1080×1350, flow/abs overlay, card box UI
-   - Copywriting buttons & mini text
-   - Skills Builder (kolom kanan) helpers
+   LGMCakra — FULL CSS (flat, fixed sizes, Urbanist)
    ========================================================= */
 
-/* ---------- THEME TOKENS ---------- */
+/* Font Urbanist */
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap");
+
+/* =========================
+   TOKENS
+   ========================= */
 :root{
-  /* Brand & neutrals */
-  --primary:#1961AE;
-  --secondary:#E4E6EF;
-  --white:#fff;
-  --gray-100:#f8f9fa;
-  --gray-200:#e9ecef;
-  --gray-400:#ced4da;
-  --gray-600:#6c757d;
-  --gray-800:#343a40;
+  --green:#0B7F6C;     /* header: Self + LGM */
+  --orange:#E17125;    /* header: Study Plan + Goals */
+  --krem:#FFF1C4;      /* body */
+  --white:#FFFFFF;
+  --text:#1E1E1E;
 
-  /* Panel/Card */
-  --panel-bg:#fff;
-  --panel-border:#e9ecef;
-  --shadow-soft:0 8px 24px rgba(0,0,0,.06);
+  /* radius & paddings tetap */
+  --r-hdr:15px;        /* header radius: 40 40 0 0 */
+  --r-bdy:10px;        /* body radius:   0 0 28 28 */
+  --pad-x:22px;
+  --pad-y:18px;
 
-  /* Rounded */
-  --radius:16px;
-
-  /* Editor palette (sinkron dengan JS COLOR) */
-  --title-default:#2e6368;   /* deep teal */
-  --title-text:#daa520;      /* goldenrod */
-  --body-default:#f6e6c5;    /* beige */
-
-  /* Accent LGM */
-  --mulberry:#61313e;
-  --text-gold:#f7c64b;
-
-  /* Stage */
-  --stage-bg:#ffffff;
+  /* grid gap default (JS bisa override via --gap-px) */
+  --gap:16px;
 }
 
-/* ---------- GLOBAL ---------- */
-html, body{
-  height:100%;
-}
-body{
-  background:#F3F6F9; /* halus */
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  color:#212529;
-}
-
-.mini{ font-size:.86rem; color:var(--gray-600); }
-
-/* Container shell spacing tweak */
-.shell{ max-width:1200px; }
-
-/* Sticky panel offset (nice under nav) */
-.sticky-top{ top:1rem; }
-
-/* Accent button (untuk Download Semua) */
-.btn-accent{
-  background: var(--primary);
-  border-color: var(--primary);
-}
-.btn-accent:hover{
-  filter: brightness(.95);
-}
-
-/* ---------- NAV / PAGER ---------- */
-#pager .nav-link{
-  border:1px solid var(--panel-border);
-  color:#39424e;
-}
-#pager .nav-link.active{
-  background: var(--primary);
-  border-color: var(--primary);
-  color:#fff;
-}
-
-/* ---------- STAGE PREVIEW ---------- */
-.stage{
+/* =========================
+   STAGE + BACKGROUND
+   ========================= */
+#stage{
   position:relative;
   width:100%;
-  /* Rasio 1080x1350 = 0.8 */
-  aspect-ratio: 1080 / 1350;
-  background: var(--stage-bg);
-  border-radius: var(--radius);
+  max-width:1080px;
+  margin-inline:auto;
+  aspect-ratio:1080/1350;
+  background:#fff;
   overflow:hidden;
-  box-shadow: var(--shadow-soft);
+  font-family:"Urbanist", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
-.stage.exporting{
-  border-radius:0 !important;
-  overflow:visible !important; /* agar tidak terklip saat render */
-}
-
-/* Background image */
-.stage .bg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
+#bgImg{
+  position:absolute; inset:0;
+  width:100%; height:100%;
   object-fit:cover;
-  pointer-events:none;
-  user-select:none;
+  pointer-events:none; user-select:none;
 }
 
-/* ---------- FLOW LAYOUT OVERLAY ---------- */
+/* =========================
+   FLOW GRID (tidak responsif)
+   ========================= */
 .flow-wrap{
   position:absolute;
-  left: var(--left-px, 0);
-  top:  var(--top-px, 0);
-  width:var(--w-px, 100%);
+  left:var(--left-px,0);
+  top:var(--top-px,0);           /* di-override JS: 375px / 438px (scaled) */
+  width:var(--w-px,100%);
   display:grid;
-  grid-template-columns: repeat(var(--cols, 2), 1fr);
-  gap: var(--gap-px, 16px);
-  padding: var(--padY-px, 0) var(--padX-px, 0);
-  box-sizing:border-box;
+  grid-template-columns:repeat(var(--cols,2), 1fr); /* 2 kolom tetap utk 2×2 & 1×2 */
+  gap:var(--gap-px,var(--gap));
+  padding:var(--padY-px,0) var(--padX-px,0);
+}
+.flow-wrap.is-1{ grid-template-columns:1fr; }      /* 2×1 vertikal */
+.flow-wrap.is-3 > .box:nth-child(3){ grid-column:1 / -1; }
+
+/* =========================
+   ABS OVERLAY (kalau ada)
+   ========================= */
+.overlay-abs.box{ position:absolute; }
+
+/* =========================
+   BOX (flat, no shadow)
+   ========================= */
+.box{ color:var(--text); }
+
+/* Header (pil) — CENTERED */
+.box .box-title{
+  background: var(--header-bg, var(--orange)); /* default oranye */
+  color: var(--white);
+  font-weight:700;          /* Bold */
+  font-size:27px;           /* FIXED */
+  line-height:1.2;
+  padding:10px 18px;
+  border-radius: var(--r-hdr) var(--r-hdr) 0 0; /* 40 40 0 0 */
+  text-align:center;        /* ⬅️ rata tengah */
 }
 
-/* ---------- ABSOLUTE BOX OVERLAY ---------- */
-.overlay-abs{
-  position:absolute;
-  box-sizing:border-box;
+/* Body (krem) */
+.box .box-body{
+  background: var(--body-bg, var(--krem));
+  color: var(--text);
+  font-weight:400;          /* Regular */
+  font-size:17px;           /* FIXED */
+  line-height:1.45;
+  padding: var(--pad-y) var(--pad-x);
+  border-radius: 0 0 var(--r-bdy) var(--r-bdy); /* 0 0 28 28 */
+  border: none;
+}
+/* Terapkan pada teks paragraf di dalam body box */
+.box .box-body p{
+  text-align: justify;           /* rata kiri-kanan */
+  text-justify: inter-word;      /* sebar jarak antar-kata (bukan antar-huruf) */
+  text-align-last: left;         /* baris terakhir tetap rata kiri */
+  hyphens: auto;                 /* pemenggalan kata otomatis */
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  overflow-wrap: break-word;     /* pecah kata panjang jika perlu */
+  word-break: normal;
 }
 
-/* ---------- GENERIC BOX (judul + body) ---------- */
-.box{
-  --title-bg: var(--title-default);
-  --title-color: var(--title-text);
-  --body-bg: var(--body-default);
-  --body-border: 1px solid rgba(0,0,0,.05);
-  --body-pad-x: 14px;
-  --body-pad-y: 12px;
-  --shadow: var(--shadow-soft);
-
-  display:flex;
-  flex-direction:column;
-  background: transparent;
-  box-shadow: var(--shadow);
-  overflow:hidden;
+/* Jangan justify daftar—biar tetap enak dibaca */
+.box .box-body ul,
+.box .box-body ol{
+  text-align: left;
 }
 
-/* ---------- Tambahan aturan box-title ---------- */
-.box-title {
-  align-self: flex-start;         /* ⬅️ biar nggak melebar full */
-  display: inline-block;
-  margin-bottom: 0px;
-  padding: .6rem .8rem;
-  line-height: .8;
-  background-color: var(--title-bg);
-  color: var(--title-color);
-  border-radius: 0 12px 0 0;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700;
-  font-size: 19px;
-  white-space: nowrap;            /* tetap 1 baris */
-  max-width: 95%;                 /* batasi kalau terlalu panjang */
-  overflow: hidden;               /* potong jika kepanjangan */
-  text-overflow: ellipsis;        /* kasih "..." kalau kepotong */
+/* (opsional) Heading di-‘balance’ agar judul lebih rapi di 2–3 baris */
+.box .box-title{
+  text-wrap: balance;
 }
 
-/* Isi box */
-.box-body{
-  background: var(--body-bg);
-  border: var(--body-border);
-  padding: var(--body-pad-y) var(--body-pad-x);
-  font-size: 14px;     /* ⬅️ ukuran isi lebih besar */
-  line-height: 1.4;    /* ⬅️ biar lega */
-  color:#1f2937;
-  min-height: 54px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  text-align: justify;
-  text-align-last: left;  /* baris terakhir tetap normal */
-  hyphens: auto;          /* pecah kata kalau perlu */
+/* =========================
+   THEME PER BOX (dari JS)
+   ========================= */
+.theme-green  .box-title{ --header-bg: var(--green); }
+.theme-orange .box-title{ --header-bg: var(--orange); }
+.body-solid  .box-body{ --body-bg: var(--krem); }
+.body-ghost  .box-body{ --body-bg: transparent; }
 
-  /* corner sesuai request */
-  border-radius: 0 15px 0 15px;
+/* =========================
+   FORM KIRI
+   ========================= */
+#inputsArea .form-label{
+  font-weight:700;
+  font-family:"Urbanist", system-ui, sans-serif;
 }
+#inputsArea textarea{
+  border:1px solid #E1E4EA;
+  resize:vertical;
+  font-family:"Urbanist", system-ui, sans-serif;
+  font-size:14px;
+}
+.fmt-bar{ display:flex; gap:.5rem; margin:.25rem 0 .5rem; }
+.fmt-bar .btn{ padding:.15rem .5rem; line-height:1; }
 
+/* Counter */
+.mini.counter{ font-size:.85rem; opacity:.95; }
+.mini.counter.ok{ color:#198754; }
+.mini.counter.near,
+.mini.counter.bad{ color:#dc3545; }
 
+/* =========================
+   KONTEN BODY (hasil format)
+   ========================= */
+.box .box-body p{ margin:.25rem 0; }
+.box .box-body ul,
+.box .box-body ol{ margin:.25rem 0 .25rem 1.25rem; }
+.box .box-body li{ margin:.1rem 0; }
 
-/* ---------- LEFT PANEL (FORM) ---------- */
-.card{
-  border:1px solid var(--panel-border);
-  border-radius: 14px;
-  background: var(--panel-bg);
-  box-shadow: var(--shadow-soft);
-}
-.card .card-body{
-  padding: 1rem 1rem 1.15rem;
-}
-
-/* Form label mini di kontrol FLOW */
-.form-label.mini{
-  font-size:.82rem;
-  color:var(--gray-600);
-  margin-bottom:.25rem;
-}
-
-/* ---------- SKILLS BUILDER (tambahan CSS agar konsisten) ---------- */
-#skillsBuilder .sb-card{
-  border:1px solid var(--panel-border);
-  border-radius:12px;
-  padding:.9rem;
-  background:#fff;
-  box-shadow: var(--shadow-soft);
-  margin-bottom:.8rem;
-}
-#skillsBuilder .sb-ctr .btn{
-  margin-right:.25rem;
-}
-#skillsBuilder .sb-wcount{
-  font-size:.85rem;
-  opacity:.9;
-}
-#skillsBuilder .sb-wcount.ok{ color:#198754; }   /* hijau */
-#skillsBuilder .sb-wcount.warn{ color:#fd7e14; } /* oranye */
-#skillsBuilder .sb-wcount.bad{ color:#dc3545; }  /* merah */
-
-/* Pills (kalau tidak di-inject oleh JS, siapkan fallback) */
-#skillsBuilder #skillOptions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:.5rem;
-}
-#skillsBuilder #skillOptions .pill{
-  display:inline-block;
-  padding:.38rem .66rem;
-  border:1px solid var(--secondary);
-  border-radius:999px;
-  background:#fff;
-  cursor:pointer;
-  user-select:none;
-  font-size:.86rem;
-  line-height:1;
-  transition:background .15s ease,color .15s ease,border-color .15s ease,transform .06s ease;
-}
-#skillsBuilder #skillOptions .pill:hover{
-  border-color:rgba(0,0,0,.12);
-  transform:translateY(-1px);
-}
-#skillsBuilder #skillOptions .pill.active{
-  background:var(--primary);
-  color:#fff;
-  border-color:var(--primary);
-}
-
-/* Instruksi kecil di panel kiri */
-#pageInstruction{
-  padding:.25rem 0 .35rem;
-  border-top:1px dashed rgba(0,0,0,.06);
-  border-bottom:1px dashed rgba(0,0,0,.06);
-  margin-bottom:.6rem;
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 992px){
-  .sticky-top{ top:0.5rem; }
-}
-@media (max-width: 576px){
-  #skillsBuilder #skillOptions .pill{
-    font-size:.82rem;
-    padding:.34rem .58rem;
-  }
-}
-
-/* ---------- PRINT / EXPORT SAFETY ---------- */
-@media print{
-  body{ background:#fff; }
-  .stage{ box-shadow:none; border-radius:0; }
-  .sticky-top{ position:static !important; }
-}
-/* ===== Uniform spacing untuk SEMUA halaman ===== */
-:root{
-  --flow-gap: 14px; /* ubah 12–16px sesuai selera */
-}
-.flow-wrap{
-  gap: var(--flow-gap, var(--gap-px)); /* pakai global gap */
-}
-.flow-wrap .box{ margin:0; }  /* jangan ada margin liar dari anak */
-.box-body{ margin:0; }        /* hilangkan jeda ekstra antar box */
-
-/* ===== Rapatkan title ke body (tanpa jarak) ===== */
-.box-title{
-  margin-bottom: 0 !important;     /* pastikan nol */
-  align-self: flex-start;           /* biar tidak stretch full */
-}
-.box-body{
-  /* kalau masih terasa renggang, kecilkan sedikit padding atas */
-  padding-top: calc(var(--body-pad-y) - 2px);
-}
-
-/* ===== Font responsif ===== */
-.box-title{
-  font-size: clamp(10px, 0.95vw, 14px);
-  line-height: 1;
-}
-.box-body{
-  font-size: clamp(12px, 1.05vw, 14px);
-  line-height: 1.4;
-}
-
-/* ===== Layout adaptif berdasarkan jumlah box ===== */
-.flow-wrap.is-3 > .box:nth-child(3){
-  grid-column: 1 / -1;            /* 3 box: item ke-3 full width */
-}
-.flow-wrap.is-1{
-  grid-template-columns: repeat(1, 1fr); /* 1 box: full width */
-}
-
-/* ===== Formatting list & paragraf rapi (spasi seragam) ===== */
-.box-body p{
-  margin: 0 0 .25rem 0;           /* sama dengan li */
-  text-align: justify;
-  text-align-last: left;
-}
-
-.box-body ul,
-.box-body ol{
-  margin: 0 0 .25rem 0;           /* block list ke teks berikutnya */
-  padding-left: 1.1em;            /* hanging indent */
-  list-style-position: outside;
-}
-
-.box-body li{
-  margin: 0 0 .25rem 0;           /* sama dengan paragraf */
-  text-align: justify;
-  text-align-last: left;
-}
-
-/* Hilangkan jarak ekstra di akhir konten */
-.box-body > :last-child{ margin-bottom: 0; }
-.box-body li:last-child{ margin-bottom: 0; }
-:root {
-  --body-bg-custom: #FFF1C4;
-  --title-green: #0B7F6C;   /* Secondary – Green */
-  --title-orange: #E17125;  /* Secondary – Orange */
-  --title-text: #fff;       /* teks header putih biar kontras */
-}
-
-/* Semua isi box (body) */
-.box-body {
-  background: var(--body-bg-custom);
-}
-
-/* Header hijau */
-.box-title.green {
-  background-color: var(--title-green);
-  color: var(--title-text);
-}
-
-/* Header oranye */
-.box-title.orange {
-  background-color: var(--title-orange);
-  color: var(--title-text);
-}
-/* Page 6: Goals */
-.page-goals .box-title{ background:#E17125; color:#fff; }
-.page-goals .box-body { background:#FFF1C4; }
-/* =========================================================
-   LGMCakra — Stylesheet (Final)
-   - Stage 1080×1350, flow/abs overlay, card box UI
-   - Copywriting buttons & mini text
-   - Skills Builder (kolom kanan) helpers
-   ========================================================= */
-
-/* ---------- THEME TOKENS ---------- */
-:root{
-  /* Brand & neutrals */
-  --primary:#1961AE;
-  --secondary:#E4E6EF;
-  --white:#fff;
-  --gray-100:#f8f9fa;
-  --gray-200:#e9ecef;
-  --gray-400:#ced4da;
-  --gray-600:#6c757d;
-  --gray-800:#343a40;
-
-  /* Panel/Card */
-  --panel-bg:#fff;
-  --panel-border:#e9ecef;
-  --shadow-soft:0 8px 24px rgba(0,0,0,.06);
-
-  /* Rounded */
-  --radius:16px;
-
-  /* Editor palette (sinkron dengan JS COLOR) */
-  --title-default:#2e6368;   /* deep teal */
-  --title-text:#daa520;      /* goldenrod */
-  --body-default:#f6e6c5;    /* beige */
-
-  /* Accent LGM */
-  --mulberry:#61313e;
-  --text-gold:#f7c64b;
-
-  /* Stage */
-  --stage-bg:#ffffff;
-}
-
-/* ---------- GLOBAL ---------- */
-html, body{
-  height:100%;
-}
-body{
-  background:#F3F6F9; /* halus */
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  color:#212529;
-}
-
-.mini{ font-size:.86rem; color:var(--gray-600); }
-
-/* Container shell spacing tweak */
-.shell{ max-width:1200px; }
-
-/* Sticky panel offset (nice under nav) */
-.sticky-top{ top:1rem; }
-
-/* Accent button (untuk Download Semua) */
-.btn-accent{
-  background: var(--primary);
-  border-color: var(--primary);
-}
-.btn-accent:hover{
-  filter: brightness(.95);
-}
-
-/* ---------- NAV / PAGER ---------- */
+/* =========================
+   PAGER (minimal)
+   ========================= */
 #pager .nav-link{
-  border:1px solid var(--panel-border);
-  color:#39424e;
+  border:1px solid #E1E4EA;
+  margin-right:.25rem;
+  border-radius:8px;
+  padding:.25rem .55rem;
+  background:#fff;
 }
 #pager .nav-link.active{
-  background: var(--primary);
-  border-color: var(--primary);
+  background:#0F766E;
   color:#fff;
+  border-color:#0F766E;
 }
 
-/* ---------- STAGE PREVIEW ---------- */
-.stage{
-  position:relative;
-  width:100%;
-  /* Rasio 1080x1350 = 0.8 */
-  aspect-ratio: 1080 / 1350;
-  background: var(--stage-bg);
-  border-radius: var(--radius);
-  overflow:hidden;
-  box-shadow: var(--shadow-soft);
-}
-.stage.exporting{
-  border-radius:0 !important;
-  overflow:visible !important; /* agar tidak terklip saat render */
+/* =========================
+   (Tidak ada media query) — ukuran fixed
+   ========================= */
+/* Halaman 1 */
+.page-1 .box-body {
+  background: transparent !important;
 }
 
-/* Background image */
-.stage .bg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  pointer-events:none;
-  user-select:none;
+/* Halaman 4 & 5 (Life Grand Map) */
+.page-4 .box-body,
+.page-5 .box-body {
+  background: transparent !important;
 }
-
-/* ---------- FLOW LAYOUT OVERLAY ---------- */
-.flow-wrap{
-  position:absolute;
-  left: var(--left-px, 0);
-  top:  var(--top-px, 0);
-  width:var(--w-px, 100%);
-  display:grid;
-  grid-template-columns: repeat(var(--cols, 2), 1fr);
-  gap: var(--gap-px, 16px);
-  padding: var(--padY-px, 0) var(--padX-px, 0);
-  box-sizing:border-box;
+/* Body box hijau (Self Potential & LGM) transparan + corner 50px */
+.theme-green .box-body {
+  background: transparent !important; /* isi transparan */
+  border-radius: 50px !important;     /* sudut 50px semua sisi */
 }
-
-/* ---------- ABSOLUTE BOX OVERLAY ---------- */
-.overlay-abs{
-  position:absolute;
-  box-sizing:border-box;
-}
-
-/* ---------- GENERIC BOX (judul + body) ---------- */
-.box{
-  --title-bg: var(--title-default);
-  --title-color: var(--title-text);
-  --body-bg: var(--body-default);
-  --body-border: 1px solid rgba(0,0,0,.05);
-  --body-pad-x: 14px;
-  --body-pad-y: 12px;
-  --shadow: var(--shadow-soft);
-
-  display:flex;
-  flex-direction:column;
-  background: transparent;
-  box-shadow: var(--shadow);
-  overflow:hidden;
-}
-
-/* ---------- Tambahan aturan box-title ---------- */
-.box-title {
-  align-self: flex-start;         /* ⬅️ biar nggak melebar full */
-  display: inline-block;
-  margin-bottom: 0px;
-  padding: .6rem .8rem;
-  line-height: .8;
-  background-color: var(--title-bg);
-  color: var(--title-color);
-  border-radius: 0 12px 0 0;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700;
-  font-size: 19px;
-  white-space: nowrap;            /* tetap 1 baris */
-  max-width: 95%;                 /* batasi kalau terlalu panjang */
-  overflow: hidden;               /* potong jika kepanjangan */
-  text-overflow: ellipsis;        /* kasih "..." kalau kepotong */
-}
-
-/* Isi box */
-.box-body{
-  background: var(--body-bg);
-  border: var(--body-border);
-  padding: var(--body-pad-y) var(--body-pad-x);
-  font-size: 14px;     /* ⬅️ ukuran isi lebih besar */
-  line-height: 1.4;    /* ⬅️ biar lega */
-  color:#1f2937;
-  min-height: 54px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  text-align: justify;
-  text-align-last: left;  /* baris terakhir tetap normal */
-  hyphens: auto;          /* pecah kata kalau perlu */
-
-  /* corner sesuai request */
-  border-radius: 0 15px 0 15px;
-}
-
-
-
-/* ---------- LEFT PANEL (FORM) ---------- */
-.card{
-  border:1px solid var(--panel-border);
-  border-radius: 14px;
-  background: var(--panel-bg);
-  box-shadow: var(--shadow-soft);
-}
-.card .card-body{
-  padding: 1rem 1rem 1.15rem;
-}
-
-/* Form label mini di kontrol FLOW */
-.form-label.mini{
-  font-size:.82rem;
-  color:var(--gray-600);
-  margin-bottom:.25rem;
-}
-
-/* ---------- SKILLS BUILDER (tambahan CSS agar konsisten) ---------- */
-#skillsBuilder .sb-card{
-  border:1px solid var(--panel-border);
-  border-radius:12px;
-  padding:.9rem;
-  background:#fff;
-  box-shadow: var(--shadow-soft);
-  margin-bottom:.8rem;
-}
-#skillsBuilder .sb-ctr .btn{
-  margin-right:.25rem;
-}
-#skillsBuilder .sb-wcount{
-  font-size:.85rem;
-  opacity:.9;
-}
-#skillsBuilder .sb-wcount.ok{ color:#198754; }   /* hijau */
-#skillsBuilder .sb-wcount.warn{ color:#fd7e14; } /* oranye */
-#skillsBuilder .sb-wcount.bad{ color:#dc3545; }  /* merah */
-
-/* Pills (kalau tidak di-inject oleh JS, siapkan fallback) */
-#skillsBuilder #skillOptions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:.5rem;
-}
-#skillsBuilder #skillOptions .pill{
-  display:inline-block;
-  padding:.38rem .66rem;
-  border:1px solid var(--secondary);
-  border-radius:999px;
-  background:#fff;
-  cursor:pointer;
-  user-select:none;
-  font-size:.86rem;
-  line-height:1;
-  transition:background .15s ease,color .15s ease,border-color .15s ease,transform .06s ease;
-}
-#skillsBuilder #skillOptions .pill:hover{
-  border-color:rgba(0,0,0,.12);
-  transform:translateY(-1px);
-}
-#skillsBuilder #skillOptions .pill.active{
-  background:var(--primary);
-  color:#fff;
-  border-color:var(--primary);
-}
-
-/* Instruksi kecil di panel kiri */
-#pageInstruction{
-  padding:.25rem 0 .35rem;
-  border-top:1px dashed rgba(0,0,0,.06);
-  border-bottom:1px dashed rgba(0,0,0,.06);
-  margin-bottom:.6rem;
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 992px){
-  .sticky-top{ top:0.5rem; }
-}
-@media (max-width: 576px){
-  #skillsBuilder #skillOptions .pill{
-    font-size:.82rem;
-    padding:.34rem .58rem;
-  }
-}
-
-/* ---------- PRINT / EXPORT SAFETY ---------- */
-@media print{
-  body{ background:#fff; }
-  .stage{ box-shadow:none; border-radius:0; }
-  .sticky-top{ position:static !important; }
-}
-/* ===== Uniform spacing untuk SEMUA halaman ===== */
+/* ===== Default (independen) ===== */
 :root{
-  --flow-gap: 14px; /* ubah 12–16px sesuai selera */
-}
-.flow-wrap{
-  gap: var(--flow-gap, var(--gap-px)); /* pakai global gap */
-}
-.flow-wrap .box{ margin:0; }  /* jangan ada margin liar dari anak */
-.box-body{ margin:0; }        /* hilangkan jeda ekstra antar box */
+  /* Header default = pil atas */
+  --hdr-r1: 30px;  /* tl */
+  --hdr-r2: 30px;  /* tr */
+  --hdr-r3: 0px;   /* br */
+  --hdr-r4: 0px;   /* bl */
 
-/* ===== Rapatkan title ke body (tanpa jarak) ===== */
-.box-title{
-  margin-bottom: 0 !important;     /* pastikan nol */
-  align-self: flex-start;           /* biar tidak stretch full */
-}
-.box-body{
-  /* kalau masih terasa renggang, kecilkan sedikit padding atas */
-  padding-top: calc(var(--body-pad-y) - 2px);
+  /* Body default = tetap seperti kamu: 0 0 28 28 */
+  --bdy-r1: 0px;   /* tl */
+  --bdy-r2: 0px;   /* tr */
+  --bdy-r3: 28px;  /* br */
+  --bdy-r4: 28px;  /* bl */
 }
 
-/* ===== Font responsif ===== */
-.box-title{
-  font-size: clamp(10px, 0.95vw, 14px);
-  line-height: 1;
-}
-.box-body{
-  font-size: clamp(12px, 1.05vw, 14px);
-  line-height: 1.4;
+/* Terapkan token ke elemen (tidak saling bergantung) */
+.box .box-title{ border-radius: var(--hdr-r1) var(--hdr-r2) var(--hdr-r3) var(--hdr-r4); }
+.box .box-body { border-radius: var(--bdy-r1) var(--bdy-r2) var(--bdy-r3) var(--bdy-r4); }
+
+/* ===== Override per tema (hanya header, body tetap default) ===== */
+
+/* Hijau: semua sudut HEADER = 40px (body tidak diubah) */
+.theme-green .box-title{
+  --hdr-r1: 40px; --hdr-r2: 40px; --hdr-r3: 40px; --hdr-r4: 40px;
 }
 
-/* ===== Layout adaptif berdasarkan jumlah box ===== */
-.flow-wrap.is-3 > .box:nth-child(3){
-  grid-column: 1 / -1;            /* 3 box: item ke-3 full width */
-}
-.flow-wrap.is-1{
-  grid-template-columns: repeat(1, 1fr); /* 1 box: full width */
+/* Oranye: HEADER tetap pil atas 40 40 0 0 (body tidak diubah) */
+.theme-orange .box-title{
+  --hdr-r1: 30px; --hdr-r2: 30px; --hdr-r3: 0px;  --hdr-r4: 0px;
 }
 
-/* ===== Formatting list & paragraf rapi (spasi seragam) ===== */
-.box-body p{
-  margin: 0 0 .25rem 0;           /* sama dengan li */
-  text-align: justify;
-  text-align-last: left;
+/* (Opsional) Kalau suatu saat mau ubah BODY saja per-tema: */
+/*
+.theme-green .box-body{
+  --bdy-r1: 0px; --bdy-r2: 0px; --bdy-r3: 40px; --bdy-r4: 40px;
 }
-
-.box-body ul,
-.box-body ol{
-  margin: 0 0 .25rem 0;           /* block list ke teks berikutnya */
-  padding-left: 1.1em;            /* hanging indent */
-  list-style-position: outside;
+.theme-orange .box-body{
+  --bdy-r1: 0px; --bdy-r2: 0px; --bdy-r3: 0px;  --bdy-r4: 40px;
 }
-
-.box-body li{
-  margin: 0 0 .25rem 0;           /* sama dengan paragraf */
-  text-align: justify;
-  text-align-last: left;
-}
-
-/* Hilangkan jarak ekstra di akhir konten */
-.box-body > :last-child{ margin-bottom: 0; }
-.box-body li:last-child{ margin-bottom: 0; }
-:root {
-  --body-bg-custom: #FFF1C4;
-  --title-green: #0B7F6C;   /* Secondary – Green */
-  --title-orange: #E17125;  /* Secondary – Orange */
-  --title-text: #fff;       /* teks header putih biar kontras */
-}
-
-/* Semua isi box (body) */
-.box-body {
-  background: var(--body-bg-custom);
-}
-
-/* Header hijau */
-.box-title.green {
-  background-color: var(--title-green);
-  color: var(--title-text);
-}
-
-/* Header oranye */
-.box-title.orange {
-  background-color: var(--title-orange);
-  color: var(--title-text);
-}
-/* Page 6: Goals */
-.page-goals .box-title{ background:#E17125; color:#fff; }
-.page-goals .box-body { background:#FFF1C4; }
-/* Page 6: Goals */
-.page-goals {
-  position: relative;
-  width: 1080px;
-  height: 1350px;
-  background: url('frame6.png') no-repeat center/cover; /* contoh bg */
-  font-family: sans-serif;
-}
-
-.page-goals .box-title {
-  background:#E17125;
-  color:#fff;
-  font-size:24px;
-  font-weight:600;
-  line-height:81px; /* samakan dengan tinggi header */
-  text-align:center;
-  border-radius:40px 40px 0 0;
-  position:absolute;
-}
-
-.page-goals .box-body {
-  background:#FFF1C4;
-  font-size:18px;
-  line-height:1.36;
-  padding:20px;
-  border-radius:0 0 40px 40px;
-  position:absolute;
-  overflow:hidden;
-}
-
-/* Box 1 — Contribution Plans */
-#p6a-title {
-  left:7.685%;
-  top:27.778%;
-  width:84.722%;
-  height:6%;
-}
-#p6a-body {
-  left:7.685%;
-  top:33.704%;
-  width:84.722%;
-  height:21.111%;
-}
-
-/* Box 2 — Personal Grand Plans */
-#p6b-title {
-  left:7.685%;
-  top:59.407%;
-  width:84.722%;
-  height:6%;
-}
-#p6b-body {
-  left:7.685%;
-  top:65.333%;
-  width:84.722%;
-  height:21.111%;
-}
-/* ===== Global: bentuk & warna default box ===== */
-:root{
-  --lgm-header-bg: #E17125;  /* oranye default; bisa diganti ke #0B7F6C per halaman */
-  --lgm-body-bg:   #FFF1C4;  /* kuning pucat */
-}
-
-/* Heading pill (atas bulat) */
-.box-title{
-  background: var(--lgm-header-bg) !important;
-  color:#fff !important;
-  border-radius: 40px 40px 0 0 !important;
-  line-height: 1 !important;
-  padding: .7rem .9rem !important;
-  margin-bottom: 0 !important;
-  align-self: flex-start;         /* tetap tidak full width */
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-/* Body kartu (bawah bulat) */
-.box-body{
-  background: var(--lgm-body-bg) !important;
-  border-radius: 0 0 40px 40px !important;
-  padding: 12px 14px !important;
-  text-align: justify;
-  text-align-last: left;
-}
-
-/* Util bila kita render header/body sebagai elemen absolut terpisah */
-.overlay-abs .box-title,
-.overlay-abs .box-body{
-  position: absolute;
-  box-sizing: border-box;
-}
-/* ===== Global: bentuk & warna default box ===== */
-:root{
-  --lgm-header-bg: #E17125;  /* oranye default; bisa diganti ke #0B7F6C per halaman */
-  --lgm-body-bg:   #FFF1C4;  /* kuning pucat */
-}
-
-/* Heading pill (atas bulat) */
-.box-title{
-  background: var(--lgm-header-bg) !important;
-  color:#fff !important;
-  border-radius: 40px 40px 0 0 !important;
-  line-height: 1 !important;
-  padding: .7rem .9rem !important;
-  margin-bottom: 0 !important;
-  align-self: flex-start;         /* tetap tidak full width */
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-/* Body kartu (bawah bulat) */
-.box-body{
-  background: var(--lgm-body-bg) !important;
-  border-radius: 0 0 40px 40px !important;
-  padding: 12px 14px !important;
-  text-align: justify;
-  text-align-last: left;
-}
-
-/* Util bila kita render header/body sebagai elemen absolut terpisah */
-.overlay-abs .box-title,
-.overlay-abs .box-body{
-  position: absolute;
-  box-sizing: border-box;
-}
-/* ===== Default Typography untuk Box ===== */
-
-/* Heading */
-.box-title {
-  font-family: 'Urbanist', sans-serif !important;
-  font-weight: 700 !important;   /* Bold */
-  font-size: 20px !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0.03em !important;  /* 3% dari figma */
-}
-
-/* Isi */
-.box-body {
-  font-family: 'Urbanist', sans-serif !important;
-  font-weight: 400 !important;   /* Regular */
-  font-size: 15px !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0 !important;
-}
-/* ratakan isi body (seluruh halaman) */
-.box .txt, 
-.box .txt p{
-  text-align: justify;
-  text-align-last: left;      /* baris terakhir tetap kiri */
-  text-justify: inter-word;   /* opsional: spasi antar-kata */
-  hyphens: auto;              /* opsional: pemenggalan kata */
-}
+*/
