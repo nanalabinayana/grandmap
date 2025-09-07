@@ -206,7 +206,7 @@ const PAGES = [
     { id:'p4a', title:'2025 – 2030', x:91,  y:438, w:430, h:489, preset:'BIG', text:'',
 
       hdr: { abs: true, x: 200, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430, align:"center"},
-      txt: { abs: true, x: 130, y: 454 + 48 + 20, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
+      txt: { abs: true, x: 130, y: 537, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
      },
     { id:'p4b', title:'2030 – 2035', x:580, y:438, w:430, h:489, preset:'BIG', text:'',
        hdr: { abs: true, x: 715, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430, align:"center"},
@@ -484,6 +484,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
