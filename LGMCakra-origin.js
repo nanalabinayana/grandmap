@@ -188,18 +188,18 @@ const PAGES = [
     // header: batasi lebar & NAIK
     hdr:{ x:40, y:14, maxWidth:310 } },
 ]},
-  { name:"Study Plan 1–4", bg:FRAME[2], boxes:[
-    { id:'p2a', title:'1st Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'' },
-    { id:'p2b', title:'2nd Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
-    { id:'p2c', title:'3rd Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'' },
-    { id:'p2d', title:'4th Term', x:563, y:805, w:435, h:400.81, preset:'BIG', text:'' },
-  ]},
+  {{ name:"Study Plan 1–4", bg:FRAME[2], boxes:[
+  { id:'p2a', title:'1st Term', x:83,  y:365,    w:435,    h:400,    preset:'BIG', text:'', hdr:{ x:88 } },
+  { id:'p2b', title:'2nd Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
+  { id:'p2c', title:'3rd Term', x:83,  y:804.19, w:435,    h:400,    preset:'BIG', text:'', hdr:{ x:88 } },
+  { id:'p2d', title:'4th Term', x:563, y:805,    w:435,    h:400.81, preset:'BIG', text:'' },
+]},
   { name:"Study Plan 5–8", bg:FRAME[3], boxes:[
-    { id:'p3a', title:'5th Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'' },
-    { id:'p3b', title:'6th Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
-    { id:'p3c', title:'7th Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'' },
-    { id:'p3d', title:'8th Term', x:563, y:805, w:435, h:400.81, preset:'BIGL', text:'' },
-  ]},
+  { id:'p2a', title:'5th Term', x:83,  y:365,    w:435,    h:400,    preset:'BIG', text:'', hdr:{ x:88 } },
+  { id:'p2b', title:'6th Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
+  { id:'p2c', title:'7th Term', x:83,  y:804.19, w:435,    h:400,    preset:'BIG', text:'', hdr:{ x:88 } },
+  { id:'p2d', title:'8th Term', x:563, y:805,    w:435,    h:400.81, preset:'BIG', text:'' },
+]},
 
 
   { name:"Life Grand Map 2025–2035", bg:FRAME[4], boxes:[
@@ -484,6 +484,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
