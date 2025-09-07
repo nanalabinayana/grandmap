@@ -195,10 +195,10 @@ const PAGES = [
     { id:'p2d', title:'4th Term', x:563, y:805, w:435, h:400.81, preset:'BIG', text:'' },
   ]},
   { name:"Study Plan 5–8", bg:FRAME[3], boxes:[
-    { id:'p2a', title:'5th Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'' },
-    { id:'p2b', title:'6th Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
-    { id:'p2c', title:'7th Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'' },
-    { id:'p2d', title:'8th Term', x:563, y:805, w:435, h:400.81, preset:'BIGL', text:'' },
+    { id:'p3a', title:'5th Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'' },
+    { id:'p3b', title:'6th Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
+    { id:'p3c', title:'7th Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'' },
+    { id:'p3d', title:'8th Term', x:563, y:805, w:435, h:400.81, preset:'BIGL', text:'' },
   ]},
 
 
@@ -206,7 +206,7 @@ const PAGES = [
     { id:'p4a', title:'2025 – 2030', x:91,  y:438, w:430, h:489, preset:'BIG', text:'',
 
       hdr: { abs: true, x: 200, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430, align:"center"},
-      txt: { abs: true, x: 130, y: 454 + 48 + 20, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
+      txt: { abs: true, x: 130, y: 537, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
      },
     { id:'p4b', title:'2030 – 2035', x:580, y:438, w:430, h:489, preset:'BIG', text:'',
        hdr: { abs: true, x: 715, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430, align:"center"},
@@ -484,6 +484,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
