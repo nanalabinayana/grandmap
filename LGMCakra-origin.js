@@ -188,58 +188,19 @@ const PAGES = [
     // header: batasi lebar & NAIK
     hdr:{ x:40, y:14, maxWidth:310 } },
 ]},
-  { name:"Study Plan 1–4", bg:FRAME[2], boxes:[
-    { id:'p2a', title:'1st Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'' ,},
-    { id:'p2b', title:'2nd Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'',},
-    { id:'p2c', title:'3rd Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'' , '},
-    { id:'p2d', title:'4th Term', x:563, y:805, w:435, h:400.81, preset:'BIG', text:'' , },
+   { name:"Study Plan 1–4", bg: FRAME[2], boxes:[
+    { id:"p2a", title:"1st Term", x:83,  y:365,    w:435,    h:400,    preset:"BIG",  text:"" },
+    { id:"p2b", title:"2nd Term", x:563, y:363.22, w:435.89, h:401.78, preset:"BIG",  text:"" },
+    { id:"p2c", title:"3rd Term", x:83,  y:804.19, w:435,    h:400,    preset:"BIG",  text:"" },
+    { id:"p2d", title:"4th Term", x:563, y:805,    w:435,    h:400.81, preset:"BIG",  text:"" }
   ]},
-  { name:"Study Plan 5–8", bg:FRAME[3], boxes:[
-    { id:'p3a', title:'5th Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'',},
-    { id:'p3b', title:'6th Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:''},
-    { id:'p3c', title:'7th Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'' },
-    { id:'p3d', title:'8th Term', x:563, y:805, w:435, h:400.81, preset:'BIGL', text:'''},
-  ]},
-
-
-  { name:"Life Grand Map 2025–2035", bg:FRAME[4], boxes:[
-    { id:'p4a', title:'2025 – 2030', x:91,  y:438, w:430, h:489, preset:'BIG', text:'',
-
-      hdr: { abs: true, x: 200, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430, align:"center"},
-      txt: { abs: true, x: 130, y: 537, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
-     },
-    { id:'p4b', title:'2030 – 2035', x:580, y:438, w:430, h:489, preset:'BIG', text:'',
-       hdr: { abs: true, x: 715, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430, align:"center"},
-       txt: { abs: true, x: 610, y: 537, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
-     },
-  ]},
-  { name:"Life Grand Map 2035–Beyond", bg:FRAME[5], boxes:[
-    { id:'p5a', title:'2035 – 2040', x:91,  y:332.73, w:430, h:613.82, preset:'BIG', text:'',
-       hdr: { abs: true, x: 200, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430, align:"center"},
-       txt: { abs: true, x: 125, y: 537, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
-    },
-    { id:'p5b', title:'2040 – Beyond', x:580, y:313.18, w:430, h:613.82, preset:'SMALL', text:'',
-       hdr: { abs: true, x: 655, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 280, align:"center"},
-       txt: { abs: true, x: 610, y: 537, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
-     },
-  ]},
-  { name:"Community Service & Grand Goals", bg:FRAME[6], boxes:[
-    {
-      id:'p6a', title:'Contribution Plan',
-      // BG PNG (absolut ke kanvas)
-      x:83, y:375, w:915, h:365, preset:'BIG', text:'',
-      // TEKS absolut ke kanvas (tidak ikut BG)
-      
-      hdr: { abs:true, x:183, y:400, size:40, weight:457, color: "#FFFFFF", maxWidthAbs: 457, align:"center"},
-      txt: { abs: true, x: 121, y: 474, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 820, lineHeight: 1.45, letterSpacing: 0}
-    },
-    {
-      id:'p6b', title:'Personal Grand Goals',
-      x:61.57, y:778, w:915, h:387, preset:'BIG', text:'',
-      hdr: { abs:true, x:183, y:818, size:40, weight:423, color: "#FFFFFF", maxWidthAbs: 457, align:"center"},
-      txt: { abs:true, x:122, y:897, size:25, weight:400, color: "#2B2B2B", maxWidthAbs: 820, lineHeight: 1.45, letterSpacing: 0}
-    },
-  ]},
+  { name:"Study Plan 5–8", bg: FRAME[3], boxes:[
+    { id:"p3a", title:"5th Term", x:83,  y:365,    w:435,    h:400,    preset:"BIG",  text:"" },
+    { id:"p3b", title:"6th Term", x:563, y:363.22, w:435.89, h:401.78, preset:"BIG",  text:"" },
+    { id:"p3c", title:"7th Term", x:83,  y:804.19, w:435,    h:400,    preset:"BIG",  text:"" },
+    { id:"p3d", title:"8th Term", x:563, y:805,    w:435,    h:400.81, preset:"BIG",  text:"" }
+  ]}
+];
 
   { name:"Cover", bg:FRAME[7], boxes:[] },
 ];
