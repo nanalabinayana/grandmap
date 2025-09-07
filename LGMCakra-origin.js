@@ -172,7 +172,7 @@ const PAGES = [
     hdr:{ x:64 }, txt:{ x:58 } },
   { id:'p1b', title:'Self Potential 2', x:568, y:375, w:430, h:349, preset:'SMALL', text:'' },
   { id:'p1c', title:'Self Potential 3', x:110, y:798, w:430, h:349, preset:'SMALL', text:'',
-    hdr:{ x:74 }, txt:{ x:70 } },
+    hdr:{ x:74 }, txt:{ x:86 } },
   { id:'p1d', title:'Self Potential 4', x:568, y:798, w:430, h:349, preset:'SMALL', text:'' },
 ]},
   { name:"Study Plan 1–4", bg:FRAME[2], boxes:[
@@ -471,6 +471,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
