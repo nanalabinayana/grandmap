@@ -170,36 +170,36 @@ const PAGES = [
  { name:"Self Potential", bg:FRAME[1], boxes:[
   // kiri–atas
   { id:'p1a', title:'Self Potential 1', x:110, y:375, w:430, h:349, preset:'SMALL', text:'',
-    // header: geser kanan & NAIKKAN sedikit (y:14 < 18)
-    hdr:{ x:64, y:14, maxWidth:320 } },
+    // header geser kanan + batasi lebar
+    hdr:{ x:64, maxWidth: 320 } },
 
   // kanan–atas
   { id:'p1b', title:'Self Potential 2', x:568, y:375, w:430, h:349, preset:'SMALL', text:'',
-    // header: batasi lebar & NAIK
-    hdr:{ x:40, y:14, maxWidth:310 } },
+    // header tetap start kiri, batasi lebar supaya aman dari ikon kanan
+    hdr:{ x:40, maxWidth: 310 } },
 
   // kiri–bawah
   { id:'p1c', title:'Self Potential 3', x:110, y:798, w:430, h:349, preset:'SMALL', text:'',
-    // header: geser kanan lebih jauh & NAIK
-    hdr:{ x:96, y:14, maxWidth:320 } },
+    // header geser lebih kanan (ikon kiri lebih “masuk”)
+    hdr:{ x:96, maxWidth: 320 } },
 
   // kanan–bawah
   { id:'p1d', title:'Self Potential 4', x:568, y:798, w:430, h:349, preset:'SMALL', text:'',
-    // header: batasi lebar & NAIK
-    hdr:{ x:40, y:14, maxWidth:310 } },
+    // batasi lebar agar tak menyentuh ikon kanan
+    hdr:{ x:40, maxWidth: 310 } },
 ]},
-  {{ name:"Study Plan 1–4", bg:FRAME[2], boxes:[
-  { id:'p2a', title:'1st Term', x:83,  y:365,    w:435,    h:400,    preset:'BIG', text:'', hdr:{ x:88 } },
-  { id:'p2b', title:'2nd Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
-  { id:'p2c', title:'3rd Term', x:83,  y:804.19, w:435,    h:400,    preset:'BIG', text:'', hdr:{ x:88 } },
-  { id:'p2d', title:'4th Term', x:563, y:805,    w:435,    h:400.81, preset:'BIG', text:'' },
-]},
+  { name:"Study Plan 1–4", bg:FRAME[2], boxes:[
+    { id:'p2a', title:'1st Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'' },
+    { id:'p2b', title:'2nd Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
+    { id:'p2c', title:'3rd Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'' },
+    { id:'p2d', title:'4th Term', x:563, y:805, w:435, h:400.81, preset:'BIG', text:'' },
+  ]},
   { name:"Study Plan 5–8", bg:FRAME[3], boxes:[
-  { id:'p2a', title:'5th Term', x:83,  y:365,    w:435,    h:400,    preset:'BIG', text:'', hdr:{ x:88 } },
-  { id:'p2b', title:'6th Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
-  { id:'p2c', title:'7th Term', x:83,  y:804.19, w:435,    h:400,    preset:'BIG', text:'', hdr:{ x:88 } },
-  { id:'p2d', title:'8th Term', x:563, y:805,    w:435,    h:400.81, preset:'BIG', text:'' },
-]},
+    { id:'p3a', title:'5th Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'' },
+    { id:'p3b', title:'6th Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
+    { id:'p3c', title:'7th Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'' },
+    { id:'p3d', title:'8th Term', x:563, y:805, w:435, h:400.81, preset:'BIGL', text:'' },
+  ]},
 
 
   { name:"Life Grand Map 2025–2035", bg:FRAME[4], boxes:[
@@ -484,9 +484,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
-
-
-
 
 
 
