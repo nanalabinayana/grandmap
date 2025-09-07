@@ -186,18 +186,7 @@ const PAGES = [
     { id:'p2d', title:'8th Term', x:563, y:805, w:435, h:400.81, preset:'BIGL', text:'' },
   ]},
 
-  { name:"Life Grand Map 2025–2035", bg:FRAME[4], boxes:[
-    { id:'p4a', title:'2025 – 2030', x:91,  y:438, w:430, h:489, preset:'SMALL', text:'',
-      // hdr:{ abs:true, x:166, y:454, size:35, weight:280, color:'#FFFFFF', maxWidthAbs:840 },
-      // txt:{ abs:true, x:166, y:166, size:35, weight:280, color:'#FFFFFF', maxWidthAbs:840 }
-      hdr: { abs: true, x: 200, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430},
-      txt: { abs: true, x: 130, y: 454 + 48 + 20, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
-     },
-    { id:'p4b', title:'2030 – 2035', x:580, y:438, w:430, h:489, preset:'SMALL', text:'',
-       hdr: { abs: true, x: 715, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430, align:"center"},
-       txt: { abs: true, x: 610, y: 537, size: 25, weight: 360, color: "#2B2B2B", maxWidthAbs: 360, lineHeight: 1.45, letterSpacing: 0}
-     },
-  ]},
+  
   { name:"Life Grand Map 2035–Beyond", bg:FRAME[5], boxes:[
     { id:'p5a', title:'2035 – 2040', x:91,  y:332.73, w:430, h:613.82, preset:'SMALL', text:'',
        hdr: { abs: true, x: 200, y: 454, size: 35, weight: 280, color: "#FFFFFF", maxWidthAbs: 430, align:"center"},
@@ -468,6 +457,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
