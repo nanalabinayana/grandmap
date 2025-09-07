@@ -167,12 +167,14 @@ function deleteTerm(pageIndex, boxId){
 
 /* ---------- PAGES: posisi BG box (ABSOLUT) & posisi teks (relatif/ABS) ---------- */
 const PAGES = [
-  { name:"Self Potential", bg:FRAME[1], boxes:[
-    { id:'p1a', title:'Self Potential 1', x:79,  y:375, w:430, h:249, preset:'BIG', text:'' },
-    { id:'p1b', title:'Self Potential 2', x:568, y:375, w:432.19, h:309, preset:'SMALL', text:'' },
-    { id:'p1c', title:'Self Potential 3', x:74.85,  y:791.4, w:434.15, h:429.6, preset:'SMALL', text:'' },
-    { id:'p1d', title:'Self Potential 4', x:568, y:798, w:448.46, h:279, preset:'SMALL', text:'' },
-  ]},
+ { name:"Self Potential", bg:FRAME[1], boxes:[
+  { id:'p1a', title:'Self Potential 1', x:110, y:375, w:430, h:349, preset:'SMALL', text:'',
+    hdr:{ x:64 }, txt:{ x:58 } },
+  { id:'p1b', title:'Self Potential 2', x:568, y:375, w:430, h:349, preset:'SMALL', text:'' },
+  { id:'p1c', title:'Self Potential 3', x:110, y:798, w:430, h:349, preset:'SMALL', text:'',
+    hdr:{ x:64 }, txt:{ x:58 } },
+  { id:'p1d', title:'Self Potential 4', x:568, y:798, w:430, h:349, preset:'SMALL', text:'' },
+]},
   { name:"Study Plan 1–4", bg:FRAME[2], boxes:[
     { id:'p2a', title:'1st Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'' },
     { id:'p2b', title:'2nd Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
@@ -469,6 +471,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
