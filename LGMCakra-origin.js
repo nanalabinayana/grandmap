@@ -25,35 +25,40 @@ function autoSizeTA(el){ el.style.height='auto'; el.style.height = el.scrollHeig
 (function inject(){
   if (document.getElementById('lgm-inline-style')) return;
   const css = `
-    .mini.counter{ font-size:.85rem; margin-top:.25rem; opacity:.95 }
-    .mini.counter.ok{ color:#198754 }
-    .mini.counter.near{ color:#dc3545 }
-    .mini.counter.bad{ color:#dc3545; font-weight:600 }
+  .mini.counter{ font-size:.85rem; margin-top:.25rem; opacity:.95 }
+  .mini.counter.ok{ color:#198754 }
+  .mini.counter.near{ color:#dc3545 }
+  .mini.counter.bad{ color:#dc3545; font-weight:600 }
 
-    /* grid area (flow-wrap) menempel pada kanvas 1080×1350 */
-    .flow-wrap{ position:absolute; left:0; top:0; right:0; bottom:0; }
-    /* kartu png */
-    .box.png-mode{
-      position:absolute;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: top left;
-    }
-    /* dua layer teks */
-    .box .hdr, .box .txt{
-      position:absolute; white-space:pre-wrap; word-wrap:break-word;
-      max-width: 100%;
-    }
-    .box .hdr{
-      font-family: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-weight:700; letter-spacing:.05em; color:#fff;
-      line-height:1.1;
-    }
-    .box .txt{
-      font-family: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-weight:400; color:#1E1E1E; line-height:1.35;
-    }
-  `;
+  .flow-wrap{ position:absolute; left:0; top:0; right:0; bottom:0; }
+  .box.png-mode{
+    position:absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top left;
+  }
+  .box .hdr, .box .txt{
+    position:absolute; white-space:pre-wrap; word-wrap:break-word;
+    max-width: 100%;
+  }
+  .box .hdr{
+    font-family: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight:700; letter-spacing:.05em; color:#fff;
+    line-height:1.1;
+  }
+  .box .txt{
+    font-family: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight:400; color:#1E1E1E; line-height:1.35;
+    /* NEW: semua isi justify, tapi baris terakhir tidak direnggangkan */
+    text-align: justify;
+    text-align-last: left;
+  }
+  /* NEW: kecilkan margin default <p> biar enter tidak “loncat” jauh */
+  .box .txt p{
+    margin: .25em 0;            /* silakan sesuaikan (0.25–0.4em enak) */
+  }
+  .box .txt p:last-child{ margin-bottom: 0; }
+`;
   const style=document.createElement('style'); style.id='lgm-inline-style'; style.textContent=css;
   document.head.appendChild(style);
 })();
@@ -521,6 +526,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
