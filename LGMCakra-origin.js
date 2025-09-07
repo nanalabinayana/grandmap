@@ -241,9 +241,8 @@ const PAGES = [
     },
   ]},
 
-  { name:"Cover", bg:FRAME[7], boxes:[] },
+     { name:"Cover", bg: FRAME[7], boxes: [] }
 ];
-
 /* ============= RENDER ============= */
 function renderPage(i){
   cur = i;
@@ -484,6 +483,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
