@@ -168,9 +168,9 @@ function deleteTerm(pageIndex, boxId){
 /* ---------- PAGES: posisi BG box (ABSOLUT) & posisi teks (relatif/ABS) ---------- */
 const PAGES = [
   { name:"Self Potential", bg:FRAME[1], boxes:[
-    { id:'p1a', title:'Self Potential 1', x:79,  y:375, w:430, h:349, preset:'SMALL', text:'' },
+    { id:'p1a', title:'Self Potential 1', x:110,  y:375, w:430, h:349, preset:'SMALL', text:'' },
     { id:'p1b', title:'Self Potential 2', x:568, y:375, w:430, h:349, preset:'SMALL', text:'' },
-    { id:'p1c', title:'Self Potential 3', x:79,  y:798, w:430, h:349, preset:'SMALL', text:'' },
+    { id:'p1c', title:'Self Potential 3', x:110,  y:798, w:430, h:349, preset:'SMALL', text:'' },
     { id:'p1d', title:'Self Potential 4', x:568, y:798, w:430, h:349, preset:'SMALL', text:'' },
   ]},
   { name:"Study Plan 1–4", bg:FRAME[2], boxes:[
@@ -452,3 +452,4 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
