@@ -170,23 +170,23 @@ const PAGES = [
  { name:"Self Potential", bg:FRAME[1], boxes:[
   // kiri–atas
   { id:'p1a', title:'Self Potential 1', x:110, y:375, w:430, h:349, preset:'SMALL', text:'',
-    // header geser kanan + batasi lebar
-    hdr:{ x:64, maxWidth: 320 } },
+    // header: geser kanan & NAIKKAN sedikit (y:14 < 18)
+    hdr:{ x:64, y:14, maxWidth:320 } },
 
   // kanan–atas
   { id:'p1b', title:'Self Potential 2', x:568, y:375, w:430, h:349, preset:'SMALL', text:'',
-    // header tetap start kiri, batasi lebar supaya aman dari ikon kanan
-    hdr:{ x:40, maxWidth: 310 } },
+    // header: batasi lebar & NAIK
+    hdr:{ x:40, y:14, maxWidth:310 } },
 
   // kiri–bawah
   { id:'p1c', title:'Self Potential 3', x:110, y:798, w:430, h:349, preset:'SMALL', text:'',
-    // header geser lebih kanan (ikon kiri lebih “masuk”)
-    hdr:{ x:96, maxWidth: 320 } },
+    // header: geser kanan lebih jauh & NAIK
+    hdr:{ x:96, y:14, maxWidth:320 } },
 
   // kanan–bawah
   { id:'p1d', title:'Self Potential 4', x:568, y:798, w:430, h:349, preset:'SMALL', text:'',
-    // batasi lebar agar tak menyentuh ikon kanan
-    hdr:{ x:40, maxWidth: 310 } },
+    // header: batasi lebar & NAIK
+    hdr:{ x:40, y:14, maxWidth:310 } },
 ]},
   { name:"Study Plan 1–4", bg:FRAME[2], boxes:[
     { id:'p2a', title:'1st Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'' },
@@ -484,6 +484,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
