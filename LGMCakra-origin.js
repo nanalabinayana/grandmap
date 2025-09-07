@@ -190,18 +190,18 @@ const PAGES = [
 ]},
   { name:"Study Plan 1–4", bg:FRAME[2], boxes:[
   { id:'p2a', title:'1st Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'',
-    hdr:{ x:80, y:28, maxWidth:350 } },   // header digeser kanan
+    hdr:{ x:100, y:28, maxWidth:350 } },   // header digeser kanan
   { id:'p2b', title:'2nd Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
   { id:'p2c', title:'3rd Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'',
-    hdr:{ x:80, y:28, maxWidth:350 } },   // header digeser kanan
+    hdr:{ x:100, y:28, maxWidth:350 } },   // header digeser kanan
   { id:'p2d', title:'4th Term', x:563, y:805, w:435, h:400.81, preset:'BIG', text:'' }
 ]},
 { name:"Study Plan 5–8", bg:FRAME[3], boxes:[
   { id:'p3a', title:'5th Term', x:83,  y:365, w:435, h:400, preset:'BIG', text:'',
-    hdr:{ x:80, y:28, maxWidth:350 } },
+    hdr:{ x:100, y:28, maxWidth:350 } },
   { id:'p3b', title:'6th Term', x:563, y:363.22, w:435.89, h:401.78, preset:'BIG', text:'' },
   { id:'p3c', title:'7th Term', x:83,  y:804.19, w:435, h:400, preset:'BIG', text:'',
-    hdr:{ x:80, y:28, maxWidth:350 } },
+    hdr:{ x:100, y:28, maxWidth:350 } },
   { id:'p3d', title:'8th Term', x:563, y:805, w:435, h:400.81, preset:'BIG', text:'' }
 ]},
 
@@ -486,6 +486,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   buildPager();
   renderPage(0);
 });
+
 
 
 
